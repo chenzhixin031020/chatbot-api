@@ -1,7 +1,9 @@
 package cn.zack.chatbot.api.test;
 
+import org.apache.http.HttpHost;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -13,6 +15,8 @@ import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Proxy;
+import java.net.InetSocketAddress;
 
 @Test
 public class ApiTest {
@@ -34,6 +38,7 @@ public class ApiTest {
 
     @Test
     public void answer() throws IOException {
+
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
         HttpPost post = new HttpPost("https://api.zsxq.com/v2/topics/411528222888558/answer");
@@ -60,4 +65,42 @@ public class ApiTest {
             System.out.println(response.getStatusLine().getStatusCode());
         }
     }
+
+    @Test
+    public void test_chatGPT() throws IOException {
+
+
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+
+        HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
+        post.addHeader("Content-Type","application/json");
+        post.addHeader("Authorization","Bearer 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");
+
+
+
+        String paramJson = "{\n" +
+                "     \"model\": \"gpt-3.5-turbo\",\n" +
+                "     \"prompt\": [{\"role\": \"user\", \"content\": \"帮我写一个冒泡排序\"}],\n" +
+                "     \"temperature\": 0.7\n" +
+                "   }";
+
+
+        /*
+        String paramJson ="{\"model\": \"text-davinci-003\", \"prompt\": \"帮我写一个java冒泡排序\", \"temperature\": 0, \"max_tokens\": 1024}";
+         */
+
+
+        StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
+        post.setEntity(stringEntity);
+
+        CloseableHttpResponse response = httpClient.execute(post);
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            String res = EntityUtils.toString(response.getEntity());
+            System.out.println(res);
+        } else {
+            System.out.println(response.getStatusLine().getStatusCode());
+        }
+
+    }
+
 }
