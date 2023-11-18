@@ -47,22 +47,21 @@ public class OpenAI implements IOpenAI {
 
         post.setConfig(build);
 
-
         String paramJson = "{\n" +
                 "     \"model\": \"gpt-3.5-turbo\",\n" +
                 "     \"messages\": [{\"role\": \"user\", \"content\": \""+question+"\"}],\n" +
                 "     \"temperature\": 0.7\n" +
                 "   }";
 
-
-
+        //这段代码是使用 Apache HttpClient 库创建一个 StringEntity 对象，用于表示将要发送的HTTP请求体（Request Body）的内容
         StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
         post.setEntity(stringEntity);
 
+        //将得到的响应封装在 CloseableHttpResponse 对象中
         CloseableHttpResponse response = httpClient.execute(post);
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-            String jsonStr = EntityUtils.toString(response.getEntity());
-            AIAnswer aiAnswer = JSON.parseObject(jsonStr, AIAnswer.class);
+            String jsonStr = EntityUtils.toString(response.getEntity());     //response.getEntity() 返回响应的实体部分，EntityUtils.toString将实体转换为字符串
+            AIAnswer aiAnswer = JSON.parseObject(jsonStr, AIAnswer.class);   //将json字符串转换为类实体
             StringBuilder answers = new StringBuilder();
             List<Choices> choices = aiAnswer.getChoices();
             for (Choices choice : choices) {

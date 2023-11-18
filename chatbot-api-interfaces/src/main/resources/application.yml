@@ -2,5 +2,5 @@ Server:
   port: 8090
 chatbot-api:
   groupId: 88885181248242
-  openAiKey: #your api-key
+  openAiKey: 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
   cookie: zsxq_access_token=7E428EE1-EFF9-8866-B599-DC4CCF59FC40_7CE4A151C8AB4C42; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22212884111481581%22%2C%22first_id%22%3A%2218b9d3d350ce0b-091242b8b69b37-745d5777-1327104-18b9d3d350d160e%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMThiOWQzZDM1MGNlMGItMDkxMjQyYjhiNjliMzctNzQ1ZDU3NzctMTMyNzEwNC0xOGI5ZDNkMzUwZDE2MGUiLCIkaWRlbnRpdHlfbG9naW5faWQiOiIyMTI4ODQxMTE0ODE1ODEifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22212884111481581%22%7D%2C%22%24device_id%22%3A%2218b9d3d350ce0b-091242b8b69b37-745d5777-1327104-18b9d3d350d160e%22%7D; zsxqsessionid=2f30a9aa3ce5e46ce6094b349a9e0b06; abtest_env=product

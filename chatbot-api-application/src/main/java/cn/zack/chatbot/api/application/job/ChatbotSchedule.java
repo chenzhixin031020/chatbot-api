@@ -35,6 +35,8 @@ public class ChatbotSchedule {
     @Resource
     private IOpenAI openAI;
 
+
+    //设置检查频率，防止系统查封
     @Scheduled(cron = "0/10 * * * * ?")
     public void run(){
         try{
