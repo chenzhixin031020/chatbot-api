@@ -69,25 +69,27 @@ public class ApiTest {
     @Test
     public void test_chatGPT() throws IOException {
 
+        String pro = "127.0.0.1";//本机地址
+        int pro1 = 15715; //代理端口号
+        //创建一个 HttpHost 实例，这样就设置了代理服务器的主机和端口。
+        HttpHost httpHost = new HttpHost(pro, pro1);
+        //创建一个 RequestConfig 对象，然后使用 setProxy() 方法将代理 httpHost 设置进去。
+        RequestConfig build = RequestConfig.custom().setProxy(httpHost).build();
+
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
         HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
         post.addHeader("Content-Type","application/json");
-        post.addHeader("Authorization","Bearer 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");
+        post.addHeader("Authorization","Bearer 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");
 
-
+        post.setConfig(build);
 
         String paramJson = "{\n" +
                 "     \"model\": \"gpt-3.5-turbo\",\n" +
-                "     \"prompt\": [{\"role\": \"user\", \"content\": \"帮我写一个冒泡排序\"}],\n" +
+                "     \"messages\": [{\"role\": \"user\", \"content\": \"帮我写一个冒泡排序算法\"}],\n" +
                 "     \"temperature\": 0.7\n" +
                 "   }";
-
-
-        /*
-        String paramJson ="{\"model\": \"text-davinci-003\", \"prompt\": \"帮我写一个java冒泡排序\", \"temperature\": 0, \"max_tokens\": 1024}";
-         */
 
 
         StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));

@@ -49,15 +49,13 @@ public class SpringBootRunTest {
             String text = topic.getQuestion().getText();
             logger.info("topicId：{} text：{}", topicId, text);
 
-
             // 回答问题
             zsxqApi.answer(groupId, cookie, topicId, text, false);
-
         }
     }
     @Test
     public void test_openAi() throws IOException {
-        String response = openAI.doChatGPT("帮我写一个java冒泡排序");
-        logger.info("测试结果：{}", response);
+        String response = openAI.doChatGPT("帮我写一个冒泡排序，要求是java");
+        logger.info("\n测试结果：{}\n", response);
     }
 }

@@ -13,15 +13,8 @@
         <module>chatbot-api-domain</module>
         <module>chatbot-api-application</module>
         <module>chatbot-api-interfaces</module>
-        <module>chatbot-api-infrastructure</module>
 
     </modules>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -93,13 +86,9 @@
                 <artifactId>hutool-all</artifactId>
                 <version>5.8.10</version>
             </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.22</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
     <build>
         <finalName>chatbot-api</finalName>
         <resources>
@@ -128,18 +117,6 @@
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
-            </plugin>
-            <plugin>
-                <!--该插件主要用途：构建可执行的JAR -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
